@@ -8,7 +8,7 @@ fi
 
 if [ ! -f /etc/apache2/sites-available/redmine ]
 then
-  PASSENGER_VERSION=`passenger-config  --version`
+  PASSENGER_VERSION=`passenger-config  --version | tr -dc '[:digit:].'`
 
   sed 's/%HOSTNAME%/'$HOSTNAME'/' inst-script/debian/httpd-redmine.conf |\
     sed 's/%PASSENGER_VERSION%/'$PASSENGER_VERSION'/' > /etc/apache2/sites-available/redmine

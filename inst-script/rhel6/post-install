@@ -8,7 +8,7 @@ fi
 
 if [ ! -f /etc/httpd/conf.d/redmine.conf ]
 then
-  PASSENGER_VERSION=`passenger-config  --version`
+  PASSENGER_VERSION=`passenger-config  --version | tr -dc '[:digit:].'`
   sed 's/%HOSTNAME%/'$HOSTNAME'/' inst-script/rhel6/httpd-redmine.conf | \
       sed 's/%PASSENGER_VERSION%/'$PASSENGER_VERSION'/' |
 	  if [ "$SSL" = "y" ]
